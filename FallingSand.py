@@ -53,7 +53,6 @@ def draw_grid():
 
 
 def update_grid():
-    # Create new grid for next generation
     next_grid = [[0 for i in range(cols)] for j in range(rows)]
     next_velocity_grid = [[0.0 for i in range(cols)] for j in range(rows)]
     visited = [[False for _ in range(cols)] for _ in range(rows)]
@@ -61,7 +60,7 @@ def update_grid():
     global grid, velocity_grid
     for j in range(cols):
         for i in range(rows):
-            state = grid[i][j] # Get state of current cell
+            state = grid[i][j]
             velocity = velocity_grid[i][j]
             has_moved = False
             if state != 0:
@@ -102,7 +101,7 @@ def update_grid():
                 visited[i][j] = True
 
 
-    grid = next_grid # Set the grid to the new generation grid
+    grid = next_grid
     velocity_grid = next_velocity_grid
 
 

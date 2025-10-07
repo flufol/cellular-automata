@@ -40,22 +40,21 @@ def draw_grid():
 def simulate():
     global grid, generation, population
 
-    # Create new grid for next generation
     next_grid = {}
 
     for (x, y) in grid:
-        live_neighbors = count_cell_live_neighbors(x, y) # Get amount of live neighbors
+        live_neighbors = count_cell_live_neighbors(x, y)
 
         if live_neighbors == 2 or live_neighbors == 3:
             next_grid[(x, y)] = 1
 
-        for i in get_cell_neighbors(x, y): # Check all neighbors
-            if i not in grid: # Check if the neighbor is a 1 (alive)
-                live_neighbors = count_cell_live_neighbors(i[0], i[1]) # Check that neighbors amount of neighbors
+        for i in get_cell_neighbors(x, y):
+            if i not in grid:
+                live_neighbors = count_cell_live_neighbors(i[0], i[1])
                 if live_neighbors == 3:
-                    next_grid[i] = 1 # Set that neighbor to 1 (alive) if it has 3 neighbors
+                    next_grid[i] = 1
 
-    grid = next_grid # Set the grid to the new generation grid
+    grid = next_grid
     generation += 1
     population = len(grid)
 
@@ -64,7 +63,7 @@ def get_cell_neighbors(x, y):
     neighbors = []
     for i in range(x - 1, x + 2):
         for j in range(y - 1, y + 2):
-            if (i, j) != (x, y):  # Exclude the cell itself
+            if (i, j) != (x, y):
                 neighbors.append((i, j))
     return neighbors
 
@@ -99,7 +98,6 @@ def zoom_in():
 def zoom_out():
     global zoom_level
     zoom_level = max(zoom_level - zoom_increment, 0.1)
-
 
 
 running = True
@@ -156,6 +154,5 @@ while running:
         simulate()
         pygame.draw.rect(screen, (3, 255, 11), (10, 10, 15, 15))
 
-    print(grid)
     pygame.display.flip()
     clock.tick(20)
