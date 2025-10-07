@@ -1,6 +1,8 @@
 ## Cellular Automata and like things that I have made
 
-So far I have made:
+These are made in python using pygame
+
+#### So far I have made:
 - Conways Game of Life
 - Langtons Ant
 - Sand Simulation
@@ -10,3 +12,4 @@ So far I have made:
 - Wire world
 - Hex grid cellular automata
 - Liquid Simulation
+- Use matplotlib
